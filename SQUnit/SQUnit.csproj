@@ -98,6 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QUnitTestSuite.cs" />
     <Compile Include="TestResult.cs" />
     <Compile Include="TestRunner.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
