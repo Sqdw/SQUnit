@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>2.0</version>
+    <title>SQUnit</title>
+    <authors>Tomas Chlouba, Miroslav Bajtos</authors>
+    <owners>Tomas Chlouba, Miroslav Bajtos</owners>
+    <licenseUrl>http://www.opensource.org/licenses/mit-license.php</licenseUrl>
+    <projectUrl>https://github.com/Sqdw/SQUnit</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>QUnit using NUnit implemented via Selenium WebDriver.</description>
+    <releaseNotes>Redesigned the API. Implemented support for browser reuse.</releaseNotes>
+    <copyright>Copyright 2011</copyright>
+    <dependencies>
+      <dependency id="Selenium.Support" version="2.8.0" />
+    </dependencies>
+    <tags>QUnit NUnit</tags>
+  </metadata>
+</package>

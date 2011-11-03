@@ -3,4 +3,4 @@ bin/
 *.suo
 _ReSharper.*
 *.ReSharper.user
-
+*.nupkg
