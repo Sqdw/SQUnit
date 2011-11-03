@@ -98,9 +98,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QUnitParser.cs" />
-    <Compile Include="QUnitTestResult.cs" />
-    <Compile Include="SQUnit.cs" />
+    <Compile Include="TestResult.cs" />
+    <Compile Include="TestRunner.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

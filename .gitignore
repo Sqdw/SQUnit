@@ -1,3 +1,6 @@
 obj/
 bin/
-_Resharper.*
+*.suo
+_ReSharper.*
+*.ReSharper.user
+

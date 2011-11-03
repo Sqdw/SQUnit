@@ -5,7 +5,7 @@ namespace SQUnit
 	/// <summary>
 	/// Encapsulates the information about a QUnit test, including the pass or fail status.
 	/// </summary>
-	public class QUnitTestResult
+	public class TestResult
 	{
 		/// <summary>
 		/// The file name the QUnit test was run from.
@@ -20,7 +20,7 @@ namespace SQUnit
 		/// <summary>
 		/// The result of the test ("pass" or "fail").
 		/// </summary>
-		public string Result { get; set; }
+		public bool Passed { get; set; }
 
 		/// <summary>
 		/// If the test failed this contains more information explaining why.
