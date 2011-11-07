@@ -33,6 +33,11 @@ namespace SQUnit
 		public Exception InitializationException { get; set; }
 
 		/// <summary>
+		/// Path to Screenshot of the page as it was displayed in the browser.
+		/// </summary>
+		public string ScreenshotPath { get; set; }
+
+		/// <summary>
 		/// Provides a concise string representation of the test so that unit testing libraries can show a reasonable description of the test.
 		/// </summary>
 		/// <returns>A concise string representation of the test</returns>

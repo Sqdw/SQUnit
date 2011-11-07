@@ -13,6 +13,9 @@ namespace SQUnit
 		readonly string _testFilePath;
 		IWebElement _qunitTestsElement;
 
+		static readonly ImageFormat ScreenshotFormat = ImageFormat.Png;
+		string ScreenshotPath { get { return Path.ChangeExtension(_testFilePath, "png"); } }
+
 		public QUnitTestSuite(IWebDriver driver, string testFilePath)
 		{
 			_driver = driver;
@@ -26,7 +29,10 @@ namespace SQUnit
 			if (elements.Length == 0)
 			{
 				SaveScreenShot();
-				throw new InvalidTestFileException("The test file is missing the list of qunit tests - element '#qunit-tests' was not found.");
+				var msg = string.Format(
+					"The test file is missing the list of qunit tests - element '#qunit-tests' was not found. See [{0}] for details.",
+					ScreenshotPath);
+				throw new InvalidTestFileException(msg);
 			}
 			_qunitTestsElement = elements[0];
 		}
@@ -59,14 +65,14 @@ namespace SQUnit
 				FileName = _testFilePath,
 				TestName = testName,
 				Passed = passed,
-				Message = message
+				Message = message,
+				ScreenshotPath = ScreenshotPath
 			};
 		}
 
 		public void SaveScreenShot()
 		{
-			var filePath = Path.ChangeExtension(_testFilePath, "png");
-			((ITakesScreenshot) _driver).GetScreenshot().SaveAsFile(filePath, ImageFormat.Png);
+			((ITakesScreenshot) _driver).GetScreenshot().SaveAsFile(ScreenshotPath, ScreenshotFormat);
 		}
 	}
 }

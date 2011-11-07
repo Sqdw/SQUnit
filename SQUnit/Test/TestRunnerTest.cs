@@ -53,9 +53,10 @@ namespace SQUnit.Test
 		[Test]
 		public void CreatesScreenshopOfFailedTest()
 		{
-			_runner.RunTestsInFile(FailingTestFilePath).ToArray();
+			var results = _runner.RunTestsInFile(FailingTestFilePath).ToArray();
 
 			var imageFile = Path.ChangeExtension(FailingTestFilePath, "png");
+			Assert.That(results[0].ScreenshotPath, Is.EqualTo(imageFile));
 			Assert.That(File.Exists(imageFile), "screenshot file exists");
 		}
 
