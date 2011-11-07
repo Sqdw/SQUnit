@@ -39,6 +39,7 @@ namespace SQUnit
 		{
 			_testSuite = new QUnitTestSuite(_driver, filePath);
 			WaitForTestsToFinish();
+			_testSuite.SaveScreenShot();
 			return _testSuite.GetTestResults();
 		}
 

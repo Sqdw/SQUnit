@@ -97,6 +97,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InvalidTestFileException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QUnitTestSuite.cs" />
     <Compile Include="TestResult.cs" />

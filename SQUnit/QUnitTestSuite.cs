@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using OpenQA.Selenium;
@@ -23,7 +24,10 @@ namespace SQUnit
 		{
 			var elements = _driver.FindElements(By.Id("qunit-tests")).ToArray();
 			if (elements.Length == 0)
-				throw new InvalidOperationException("No QUnit tests were found in the test file.");
+			{
+				SaveScreenShot();
+				throw new InvalidTestFileException("The test file is missing the list of qunit tests - element '#qunit-tests' was not found.");
+			}
 			_qunitTestsElement = elements[0];
 		}
 
@@ -57,6 +61,12 @@ namespace SQUnit
 				Passed = passed,
 				Message = message
 			};
+		}
+
+		public void SaveScreenShot()
+		{
+			var filePath = Path.ChangeExtension(_testFilePath, "png");
+			((ITakesScreenshot) _driver).GetScreenshot().SaveAsFile(filePath, ImageFormat.Png);
 		}
 	}
 }
