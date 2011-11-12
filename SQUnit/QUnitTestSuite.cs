@@ -18,6 +18,9 @@ namespace SQUnit
 
 		public QUnitTestSuite(IWebDriver driver, string testFilePath)
 		{
+			if (!File.Exists(testFilePath))
+				throw new FileNotFoundException("The test file '" + testFilePath + "'was not found.", testFilePath);
+
 			_driver = driver;
 			_testFilePath = testFilePath;
 			_driver.Navigate().GoToUrl(Path.GetFullPath(_testFilePath));
@@ -55,19 +58,28 @@ namespace SQUnit
 			var testName = testOutput.FindElement(By.ClassName("test-name")).Text;
 			var resultClass = testOutput.GetAttribute("class");
 			
-			var passed = resultClass == "pass";
-			var message = passed
-			              	? string.Empty
-			              	: testOutput.FindElement(By.ClassName("fail")).Text;
+			if (resultClass == "pass")
+				return CreateTestResult(testName, true, string.Empty);
 
+			if (resultClass == "fail")
+				return CreateTestResult(testName, false, testOutput.FindElement(By.ClassName("fail")).Text);
+
+			if (resultClass == "running")
+				return CreateTestResult(testName, false, "The test did not finish within time limit.");
+
+			return CreateTestResult(testName, false, "Unknown test class: '" + resultClass + "'");
+		}
+
+		TestResult CreateTestResult(string testName, bool passed, string message)
+		{
 			return new TestResult
-			{
-				FileName = _testFilePath,
-				TestName = testName,
-				Passed = passed,
-				Message = message,
-				ScreenshotPath = ScreenshotPath
-			};
+				{
+					FileName = _testFilePath,
+					TestName = testName,
+					Passed = passed,
+					Message = message,
+					ScreenshotPath = ScreenshotPath
+				};
 		}
 
 		public void SaveScreenShot()

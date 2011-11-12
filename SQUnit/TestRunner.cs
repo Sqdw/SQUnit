@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Remote;
@@ -13,13 +14,15 @@ namespace SQUnit
 		const int PollingIntervalInMs = 100;
 
 		IWebDriver _driver;
-		int _maxWaitInMs = 10000;
 		QUnitTestSuite _testSuite;
 
 		public TestRunner()
 		{
-			_driver = CreateFirefoxDriver();
+			MaxWaitInMs = 10000;
+			_driver = new ChromeDriver();
 		}
+
+		public int MaxWaitInMs { get; set; }
 
 		static IWebDriver CreateInternetExplorerDriver()
 		{
@@ -45,7 +48,7 @@ namespace SQUnit
 
 		void WaitForTestsToFinish()
 		{
-			var remainingTimeInMs = _maxWaitInMs;
+			var remainingTimeInMs = MaxWaitInMs;
 
 			while (remainingTimeInMs > 0)
 			{

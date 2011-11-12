@@ -9,6 +9,7 @@ namespace SQUnit.Test
 	{
 		const string FailingTestFilePath = "TestPages/OneFailingTest.html";
 		const string EmptyTestFilePath = "TestPages/EmptyTest.html";
+		const string InfiniteTestFilePath = "TestPages/InfiniteTest.html";
 
 		TestRunner _runner;
 
@@ -22,6 +23,12 @@ namespace SQUnit.Test
 		public void TestFixtureTearDown()
 		{
 			_runner.Dispose();
+		}
+
+		[SetUp]
+		public void SetUp()
+		{
+			_runner.MaxWaitInMs = 10000;
 		}
 
 		[Test]
@@ -66,6 +73,15 @@ namespace SQUnit.Test
 			Assert.Throws<InvalidTestFileException>(() => _runner.RunTestsInFile(EmptyTestFilePath).ToArray());
 			var imageFile = Path.ChangeExtension(EmptyTestFilePath, "png");
 			Assert.That(File.Exists(imageFile), "screenshot file exists");
+		}
+
+		[Test]
+		public void ReturnsFailureWhenSlowTestDoesNotFinishWithinTimeLimit()
+		{
+			_runner.MaxWaitInMs = 100;
+			var results = _runner.RunTestsInFile(InfiniteTestFilePath).ToArray();
+			Assert.That(results, Has.Length.EqualTo(1));
+			Assert.That(results[0].Passed, Is.False);
 		}
 	}
 }
