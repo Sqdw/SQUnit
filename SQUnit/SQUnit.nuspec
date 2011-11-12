@@ -13,7 +13,7 @@
     <releaseNotes>Implemented saving of screenshots of test-pages.</releaseNotes>
     <copyright>Copyright 2011</copyright>
     <dependencies>
-      <dependency id="Selenium.Support" version="2.8.0" />
+      <dependency id="Selenium.Support" version="2.12.0" />
     </dependencies>
     <tags>QUnit NUnit</tags>
   </metadata>
