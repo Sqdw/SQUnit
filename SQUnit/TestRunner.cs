@@ -16,10 +16,14 @@ namespace SQUnit
 		IWebDriver _driver;
 		QUnitTestSuite _testSuite;
 
-		public TestRunner()
+		public TestRunner() : this(CreateFirefoxDriver())
+		{
+		}
+
+		public TestRunner(IWebDriver driver)
 		{
 			MaxWaitInMs = 10000;
-			_driver = new ChromeDriver();
+			_driver = driver;
 		}
 
 		public int MaxWaitInMs { get; set; }
