@@ -28,11 +28,6 @@ namespace SQUnit
 		public string Message { get; set; }
 
 		/// <summary>
-		/// Will be thrown if there was a problem initializing the QUnit test.
-		/// </summary>
-		public Exception InitializationException { get; set; }
-
-		/// <summary>
 		/// Path to Screenshot of the page as it was displayed in the browser.
 		/// </summary>
 		public string ScreenshotPath { get; set; }
@@ -45,5 +40,12 @@ namespace SQUnit
 		{
 			return string.Format("[{0}] {1}", FileName, TestName);
 		}
+
+		public string GetDescription()
+		{
+			var location = ToString();
+			var result = Passed ? "Passed" : string.Format("Failed - {0}", Message);
+			return location + ": " + result;
+		}	
 	}
 }
