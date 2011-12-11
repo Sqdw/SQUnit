@@ -1,3 +1,0 @@
-This is a library that provides simple access to QUnit tests from NUnit using Selenium WebDriver.
-
-It is vastly based on the NQUnit, which uses WatiN to do the same.
