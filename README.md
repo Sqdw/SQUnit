@@ -8,7 +8,7 @@ SQUnit is a library that provides simple access to QUnit tests from any C# unit-
 
 # Usage
 
-```
+```csharp
 // Create a TestRunner instance. 
 // The instance can be reused to run multiple tests.
 var runner = new TestRunner();
