@@ -42,7 +42,7 @@ namespace SQUnit
 			return new FirefoxDriver();
 		}
 
-		public IEnumerable<TestResult> RunTestsInFile(string filePath)
+		public TestResult[] RunTestsInFile(string filePath)
 		{
 			_testSuite = new QUnitTestSuite(_driver, filePath);
 			WaitForTestsToFinish();

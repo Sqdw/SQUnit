@@ -45,11 +45,12 @@ namespace SQUnit
 			return _qunitTestsElement.FindElements(By.CssSelector("li.running")).Any();
 		}
 
-		public IEnumerable<TestResult> GetTestResults()
+		public TestResult[] GetTestResults()
 		{
 			return _qunitTestsElement
 				.FindElements(By.CssSelector("li[id^='test-output']"))
-				.Select(ParseTestResult);
+				.Select(ParseTestResult)
+				.ToArray();
 		}
 
 
