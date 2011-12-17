@@ -1,6 +1,10 @@
 obj/
 bin/
+
 *.suo
 _ReSharper.*
 *.ReSharper.user
 *.nupkg
+
+# Don't include NuGet Packages
+packages/
