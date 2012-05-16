@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
-using OpenQA.Selenium.Remote;
 
 namespace SQUnit
 {
@@ -32,9 +29,8 @@ namespace SQUnit
 		{
 			// Note: InternetExplorer driver throws exceptions and doesn't close Browser window
 			// It is not recommended to use it.
-			var capabilities = DesiredCapabilities.InternetExplorer();
-			capabilities.SetCapability("ignoreProtectedModeSettings", true);
-			return new InternetExplorerDriver(capabilities);
+			var options = new InternetExplorerOptions { IntroduceInstabilityByIgnoringProtectedModeSettings = true };
+			return new InternetExplorerDriver(options);
 		}
 
 		static IWebDriver CreateFirefoxDriver()

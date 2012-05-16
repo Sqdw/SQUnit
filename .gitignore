@@ -3,8 +3,8 @@ bin/
 
 *.suo
 _ReSharper.*
-*.ReSharper.user
 *.nupkg
+*.user
 
 # Don't include NuGet Packages
 packages/
