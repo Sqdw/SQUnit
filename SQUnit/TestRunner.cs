@@ -6,21 +6,26 @@ using OpenQA.Selenium.IE;
 
 namespace SQUnit
 {
+	public delegate ITestSuite TestSuiteFactoryDelegate(IWebDriver driver, string testFilePath);
+
 	public class TestRunner : IDisposable
 	{
 		const int PollingIntervalInMs = 100;
 
 		IWebDriver _driver;
-		QUnitTestSuite _testSuite;
+		ITestSuite _testSuite;
+		readonly TestSuiteFactoryDelegate _defaultTestSuiteFactory;
 
-		public TestRunner() : this(CreateFirefoxDriver())
+		public TestRunner(TestSuiteFactoryDelegate defaultTestSuiteFactory = null)
+			: this(defaultTestSuiteFactory, null)
 		{
 		}
 
-		public TestRunner(IWebDriver driver)
+		public TestRunner(TestSuiteFactoryDelegate defaultTestSuiteFactory, IWebDriver driver)
 		{
 			MaxWaitInMs = 10000;
-			_driver = driver;
+			_driver = driver ?? CreateFirefoxDriver();
+			_defaultTestSuiteFactory = defaultTestSuiteFactory ?? QUnitTestSuite.FactoryDelegate;
 		}
 
 		public int MaxWaitInMs { get; set; }
@@ -38,9 +43,10 @@ namespace SQUnit
 			return new FirefoxDriver();
 		}
 
-		public TestResult[] RunTestsInFile(string filePath)
+		public TestResult[] RunTestsInFile(string filePath, TestSuiteFactoryDelegate testSuiteFactory = null)
 		{
-			_testSuite = new QUnitTestSuite(_driver, filePath);
+			var factory = testSuiteFactory ?? _defaultTestSuiteFactory;
+			_testSuite = factory(_driver, filePath);
 			WaitForTestsToFinish();
 			_testSuite.SaveScreenShot();
 			return _testSuite.GetTestResults();

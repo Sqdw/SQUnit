@@ -1,34 +1,22 @@
-using System;
-using System.Collections.Generic;
-using System.Drawing.Imaging;
-using System.IO;
 using System.Linq;
 using OpenQA.Selenium;
 
 namespace SQUnit
 {
-	public class QUnitTestSuite
+	public class QUnitTestSuite : TestSuiteBase
 	{
-		readonly IWebDriver _driver;
-		readonly string _testFilePath;
 		IWebElement _qunitTestsElement;
 
-		static readonly ImageFormat ScreenshotFormat = ImageFormat.Png;
-		string ScreenshotPath { get { return Path.ChangeExtension(_testFilePath, "png"); } }
+		public static readonly TestSuiteFactoryDelegate FactoryDelegate = (driver, path) => new QUnitTestSuite(driver, path);
 
-		public QUnitTestSuite(IWebDriver driver, string testFilePath)
+		public QUnitTestSuite(IWebDriver driver, string testFilePath) 
+			: base(driver, testFilePath)
 		{
-			if (!File.Exists(testFilePath))
-				throw new FileNotFoundException("The test file '" + testFilePath + "'was not found.", testFilePath);
-
-			_driver = driver;
-			_testFilePath = testFilePath;
-			_driver.Navigate().GoToUrl(Path.GetFullPath(_testFilePath));
 		}
 
-		public void Update()
+		public override void Update()
 		{
-			var elements = _driver.FindElements(By.Id("qunit-tests")).ToArray();
+			var elements = Driver.FindElements(By.Id("qunit-tests")).ToArray();
 			if (elements.Length == 0)
 			{
 				SaveScreenShot();
@@ -40,12 +28,12 @@ namespace SQUnit
 			_qunitTestsElement = elements[0];
 		}
 
-		public bool IsRunning()
+		public override bool IsRunning()
 		{
 			return _qunitTestsElement.FindElements(By.CssSelector("li.running")).Any();
 		}
 
-		public TestResult[] GetTestResults()
+		public override TestResult[] GetTestResults()
 		{
 			return _qunitTestsElement
 				.FindElements(By.CssSelector("li[id^='test-output']"))
@@ -58,7 +46,7 @@ namespace SQUnit
 		{
 			var testName = testOutput.FindElement(By.ClassName("test-name")).Text;
 			var resultClass = testOutput.GetAttribute("class");
-			
+
 			if (resultClass == "pass")
 				return CreateTestResult(testName, true, string.Empty);
 
@@ -69,23 +57,6 @@ namespace SQUnit
 				return CreateTestResult(testName, false, "The test did not finish within time limit.");
 
 			return CreateTestResult(testName, false, "Unknown test class: '" + resultClass + "'");
-		}
-
-		TestResult CreateTestResult(string testName, bool passed, string message)
-		{
-			return new TestResult
-				{
-					FileName = _testFilePath,
-					TestName = testName,
-					Passed = passed,
-					Message = message,
-					ScreenshotPath = ScreenshotPath
-				};
-		}
-
-		public void SaveScreenShot()
-		{
-			((ITakesScreenshot) _driver).GetScreenshot().SaveAsFile(ScreenshotPath, ScreenshotFormat);
 		}
 	}
 }
