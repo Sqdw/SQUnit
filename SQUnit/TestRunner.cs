@@ -25,7 +25,7 @@ namespace SQUnit
 		{
 			MaxWaitInMs = 10000;
 			_driver = driver ?? CreateFirefoxDriver();
-			_defaultTestSuiteFactory = defaultTestSuiteFactory ?? QUnitTestSuite.FactoryDelegate;
+			_defaultTestSuiteFactory = defaultTestSuiteFactory ?? QUnitTestSuite.Factory;
 		}
 
 		public int MaxWaitInMs { get; set; }
@@ -43,10 +43,14 @@ namespace SQUnit
 			return new FirefoxDriver();
 		}
 
-		public TestResult[] RunTestsInFile(string filePath, TestSuiteFactoryDelegate testSuiteFactory = null)
+		public TestResult[] RunTestsInFile(string filePath)
 		{
-			var factory = testSuiteFactory ?? _defaultTestSuiteFactory;
-			_testSuite = factory(_driver, filePath);
+			return RunTestsInFile(filePath, _defaultTestSuiteFactory);
+		}
+
+		public TestResult[] RunTestsInFile(string filePath, TestSuiteFactoryDelegate testSuiteFactory)
+		{
+			_testSuite = testSuiteFactory(_driver, filePath);
 			WaitForTestsToFinish();
 			_testSuite.SaveScreenShot();
 			return _testSuite.GetTestResults();

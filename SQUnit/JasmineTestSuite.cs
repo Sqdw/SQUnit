@@ -8,7 +8,7 @@ namespace SQUnit
 	{
 		IWebElement _htmlReporter;
 
-		public static readonly TestSuiteFactoryDelegate FactoryDelegate = (driver, path) => new JasmineTestSuite(driver, path);
+		public static readonly TestSuiteFactoryDelegate Factory = (driver, path) => new JasmineTestSuite(driver, path);
 
 		public JasmineTestSuite(IWebDriver driver, string testFilePath)
 			: base(driver, testFilePath)

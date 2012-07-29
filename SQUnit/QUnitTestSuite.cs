@@ -7,7 +7,7 @@ namespace SQUnit
 	{
 		IWebElement _qunitTestsElement;
 
-		public static readonly TestSuiteFactoryDelegate FactoryDelegate = (driver, path) => new QUnitTestSuite(driver, path);
+		public static readonly TestSuiteFactoryDelegate Factory = (driver, path) => new QUnitTestSuite(driver, path);
 
 		public QUnitTestSuite(IWebDriver driver, string testFilePath) 
 			: base(driver, testFilePath)

@@ -31,7 +31,7 @@ SQUnit is distributed via NuGet - see http://nuget.org/packages/SQUnit for more 
 // The instance can be reused to run multiple tests.
 var runner = new TestRunner();
 // Alternative way - specify QUnit explicitly
-// var runner =  new TestRunner(QUnitTestSuite.FactoryDelegate);
+// var runner =  new TestRunner(QUnitTestSuite.Factory);
 
 // Prepare the HTML file with QUnit scaffolding and
 // anything else you need to run your test.
@@ -53,7 +53,7 @@ You can also look at test pages used for SQUnit tests: [SQUnit/Test/QUnit](https
 ```csharp
 // Create a TestRunner instance.
 // The instance can be reused to run multiple tests.
-var runner =  new TestRunner(JasmineTestSuite.FactoryDelegate);
+var runner =  new TestRunner(JasmineTestSuite.Factory);
 
 // Prepare the HTML file with Jasmine scaffolding and
 // anything else you need to run your test.

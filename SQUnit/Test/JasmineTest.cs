@@ -19,7 +19,7 @@ namespace SQUnit.Test
 		[TestFixtureSetUp]
 		public void TestFixtureSetUp()
 		{
-			_runner = new TestRunner(JasmineTestSuite.FactoryDelegate);
+			_runner = new TestRunner(JasmineTestSuite.Factory);
 		}
 
 		[TestFixtureTearDown]
