@@ -75,28 +75,28 @@
     <Content Include="Jasmine\OnePassingTest.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestPages\InfiniteTest.html">
+    <Content Include="QUnit\InfiniteTest.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestPages\InfiniteTest.js">
+    <Content Include="QUnit\InfiniteTest.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestPages\EmptyTest.html">
+    <Content Include="QUnit\EmptyTest.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestPages\OneFailingTest.html">
+    <Content Include="QUnit\OneFailingTest.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestPages\OneFailingTest.js">
+    <Content Include="QUnit\OneFailingTest.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestPages\OnePassingTest.html">
+    <Content Include="QUnit\OnePassingTest.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestPages\OnePassingTest.js">
+    <Content Include="QUnit\OnePassingTest.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestPages\qunit.js">
+    <Content Include="QUnit\qunit.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

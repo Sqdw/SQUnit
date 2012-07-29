@@ -7,9 +7,9 @@ namespace SQUnit.Test
 	[TestFixture]
 	public class TestRunnerTest
 	{
-		const string FailingTestFilePath = "TestPages/OneFailingTest.html";
-		const string EmptyTestFilePath = "TestPages/EmptyTest.html";
-		const string InfiniteTestFilePath = "TestPages/InfiniteTest.html";
+		const string FailingTestFilePath = "QUnit/OneFailingTest.html";
+		const string EmptyTestFilePath = "QUnit/EmptyTest.html";
+		const string InfiniteTestFilePath = "QUnit/InfiniteTest.html";
 
 		TestRunner _runner;
 
@@ -34,12 +34,12 @@ namespace SQUnit.Test
 		[Test]
 		public void RunsPassingTest()
 		{
-			var results = _runner.RunTestsInFile("TestPages/OnePassingTest.html").ToArray();
+			var results = _runner.RunTestsInFile("QUnit/OnePassingTest.html").ToArray();
 
 			Assert.That(results, Has.Length.EqualTo(1));
 			var result = results[0];
 			Assert.That(result.Passed, Is.True, "Passed");
-			Assert.That(result.FileName, Is.EqualTo("TestPages/OnePassingTest.html"));
+			Assert.That(result.FileName, Is.EqualTo("QUnit/OnePassingTest.html"));
 			Assert.That(result.TestName, Is.EqualTo("a passing test"));
 			Assert.That(result.Message, Is.EqualTo(string.Empty));
 		}
