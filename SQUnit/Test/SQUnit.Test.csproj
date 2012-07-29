@@ -51,6 +51,12 @@
     <Compile Include="TestRunnerTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Jasmine\SlowTest.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Jasmine\EmptyTest.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Jasmine\jasmine-1.2.0\jasmine-html.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -64,12 +70,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Jasmine\OneFailingTest.js">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Jasmine\OneFailingTest.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Jasmine\OnePassingTest.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Jasmine\OnePassingTest.js">
