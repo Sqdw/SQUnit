@@ -13,7 +13,7 @@
     <releaseNotes>Implemented support for Jasmine, changed AssertAllTestsPassed() to throw TestFailedException.</releaseNotes>
     <copyright>Copyright 2012</copyright>
     <dependencies>
-      <dependency id="Selenium.Support" version="2.23.0" />
+      <dependency id="Selenium.Support" version="2.25.1" />
     </dependencies>
     <tags>QUnit NUnit Jasmine</tags>
   </metadata>
