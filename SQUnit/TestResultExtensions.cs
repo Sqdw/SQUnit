@@ -36,7 +36,7 @@ namespace SQUnit
 		static void ThrowTestFailure(string testFailureDescription)
 		{
 			var message = string.Format("QUnit test(s) failed:{0}{1}", Environment.NewLine, testFailureDescription);
-			throw new ApplicationException(message);
+			throw new TestFailedException(message);
 		}
 	}
 }

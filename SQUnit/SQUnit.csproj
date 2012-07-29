@@ -108,6 +108,7 @@
     <Compile Include="ITestSuite.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="JasmineTestSuite.cs" />
+    <Compile Include="TestFailedException.cs" />
     <Compile Include="TestResult.cs" />
     <Compile Include="TestResultExtensions.cs" />
     <Compile Include="TestRunner.cs" />
