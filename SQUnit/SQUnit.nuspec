@@ -9,12 +9,12 @@
     <licenseUrl>http://www.opensource.org/licenses/mit-license.php</licenseUrl>
     <projectUrl>https://github.com/Sqdw/SQUnit</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>QUnit using NUnit implemented via Selenium WebDriver.</description>
-    <releaseNotes>Updated Selenium dependency to 2.23.</releaseNotes>
-    <copyright>Copyright 2011</copyright>
+    <description>Runs QUnit &amp; Jasmine unit-tests from .NET via Selenium WebDriver.</description>
+    <releaseNotes>Implemented support for Jasmine, changed AssertAllTestsPassed() to throw TestFailedException.</releaseNotes>
+    <copyright>Copyright 2012</copyright>
     <dependencies>
       <dependency id="Selenium.Support" version="2.23.0" />
     </dependencies>
-    <tags>QUnit NUnit</tags>
+    <tags>QUnit NUnit Jasmine</tags>
   </metadata>
 </package>
