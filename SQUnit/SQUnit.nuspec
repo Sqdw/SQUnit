@@ -10,10 +10,10 @@
     <projectUrl>https://github.com/Sqdw/SQUnit</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Runs QUnit &amp; Jasmine unit-tests from .NET via Selenium WebDriver.</description>
-    <releaseNotes>Implemented support for Jasmine, changed AssertAllTestsPassed() to throw TestFailedException.</releaseNotes>
-    <copyright>Copyright 2012</copyright>
+    <releaseNotes>Updated Selenium libraries to work with the latest Firefox version.</releaseNotes>
+    <copyright>Copyright 2013</copyright>
     <dependencies>
-      <dependency id="Selenium.Support" version="2.25.1" />
+      <dependency id="Selenium.Support" version="2.29.1" />
     </dependencies>
     <tags>QUnit NUnit Jasmine</tags>
   </metadata>
