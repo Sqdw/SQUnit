@@ -13,7 +13,7 @@
     <releaseNotes>Updated Selenium libraries to work with the latest Firefox version.</releaseNotes>
     <copyright>Copyright 2013</copyright>
     <dependencies>
-      <dependency id="Selenium.Support" version="2.32.0" />
+      <dependency id="Selenium.Support" version="2.32.1" />
     </dependencies>
     <tags>QUnit NUnit Jasmine</tags>
   </metadata>
