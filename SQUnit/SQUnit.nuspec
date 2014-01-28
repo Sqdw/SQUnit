@@ -11,7 +11,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Runs QUnit &amp; Jasmine unit-tests from .NET via Selenium WebDriver.</description>
     <releaseNotes>Updated Selenium libraries to work with the latest Firefox version.</releaseNotes>
-    <copyright>Copyright 2013</copyright>
+    <copyright>Copyright 2013-2014</copyright>
     <dependencies>
       <dependency id="Selenium.Support" version="2.32.1" />
     </dependencies>
