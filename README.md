@@ -66,6 +66,6 @@ var testResults = runner.RunTestsInFile(htmlFilePath);
 testResults.AssertAllTestsPassed();
 ```
 
-See [Jasmine documentation](http://pivotal.github.com/jasmine/#section-The_Runner_and_Reporter) for information on JavaScript API and HTML scaffolding.
+See [Jasmine documentation](https://jasmine.github.io/pages/docs_home.html) for information on JavaScript API and HTML scaffolding.
 
 You can also look at the test runner used for SQUnit tests: [SQUnit/Test/Jasmine/runner.html](https://github.com/Sqdw/SQUnit/tree/master/SQUnit/Test/Jasmine/runner.html)
